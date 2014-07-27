@@ -2,8 +2,8 @@ module Refinery
   class Plugin
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
-                  :dashboard, :always_allow_access, :menu_match,
-                  :hide_from_menu, :pathname, :plugin_activity
+                  :always_allow_access, :menu_match, :hide_from_menu,
+                  :pathname, :plugin_activity
 
     def self.register(&block)
       yield(plugin = self.new)
@@ -13,7 +13,6 @@ module Refinery
       # Set defaults.
       plugin.menu_match ||= %r{refinery/#{plugin.name}(/.+?)?$}
       plugin.always_allow_access ||= false
-      plugin.dashboard ||= false
       plugin.class_name ||= plugin.name.camelize
 
       # add the new plugin to the collection of registered plugins
@@ -37,7 +36,7 @@ module Refinery
 
     # Used to highlight the current tab in the admin interface
     def highlighted?(params)
-      !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match) || (dashboard && params[:action] == 'error_404')
+      !!(params[:controller].try(:gsub, "admin/", "") =~ menu_match)
     end
 
     def pathname=(value)

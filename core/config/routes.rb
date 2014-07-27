@@ -3,7 +3,6 @@ Refinery::Core::Engine.routes.draw do
   get "#{Refinery::Core.backend_route}/message", :to => 'fast#message', :as => :message
 
   namespace :admin, :path => Refinery::Core.backend_route do
-    root :to => 'dashboard#index'
     resources :dialogs, :only => [:index, :show]
   end
 
