@@ -3,7 +3,7 @@ module Refinery
 
     attr_accessor :name, :class_name, :controller, :directory, :url,
                   :always_allow_access, :menu_match, :hide_from_menu,
-                  :pathname, :plugin_activity
+                  :pathname
 
     def self.register(&block)
       yield(plugin = self.new)
@@ -32,6 +32,10 @@ module Refinery
     # Stores information that can be used to retrieve the latest activities of this plugin
     def activity=(activities)
       Refinery.deprecate('Refinery::Plugin#activity=', when: '3.1')
+    end
+
+    def dashboard=(dashboard)
+      Refinery.deprecate('Refinery::Plugin#dashboard=', when: '3.1')
     end
 
     # Used to highlight the current tab in the admin interface
