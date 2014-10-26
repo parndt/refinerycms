@@ -4,6 +4,11 @@ describe "dashboard", :type => :feature do
   refinery_login
 
   describe "quick tasks" do
+    before do
+      expect(Refinery::Plugins.active).to receive(:names).any_number_of_times.
+        and_return(%w(refinery_pages refinery_files refinery_images))
+    end
+
     specify "buttons" do
       visit refinery.admin_dashboard_path
 
