@@ -2,7 +2,7 @@ require "spec_helper"
 
 module Refinery
   describe "site bar", :type => :feature do
-    refinery_login_with :refinery_user
+    refinery_login
 
     it "have logout link" do
       visit refinery.admin_dashboard_path

@@ -3,7 +3,7 @@ require "spec_helper"
 module Refinery
 
   describe "Admin Images Tab", type: :feature do
-    refinery_login_with :refinery_user
+    refinery_login
 
     context 'when there are no images' do
       let(:initial_path) { refinery.admin_images_path(view: %w(grid list).sample) }

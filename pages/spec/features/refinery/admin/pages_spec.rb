@@ -17,7 +17,7 @@ module Refinery
   module Admin
     describe "Pages", :type => :feature do
       before { ::I18n.default_locale = Globalize.locale = :en }
-      refinery_login_with :refinery_user
+      refinery_login
 
       context "when no pages" do
         it "invites to create one" do
